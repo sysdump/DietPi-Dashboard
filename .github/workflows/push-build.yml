@@ -59,9 +59,6 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: ${{ matrix.job.pretty }}-${{ steps.toolchain.outputs.cachekey }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
       - name: Install set-cargo-version
         run: cargo install set-cargo-version
       - name: Change frontend version to commit hash

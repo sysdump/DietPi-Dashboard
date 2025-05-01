@@ -101,7 +101,7 @@ fn get_process_data(process: &mut psutil::process::Process) -> anyhow::Result<Un
 #[instrument]
 // Processes may have changed, so don't return on error, just skip that process
 pub async fn processes() -> anyhow::Result<Vec<shared::ProcessData>> {
-    let mut processes = process::processes().context("Couldn't get list of processes")?;
+    let processes = process::processes().context("Couldn't get list of processes")?;
     let mut process_list = Vec::with_capacity(processes.len());
     sleep(Duration::from_millis(500)).await;
     for mut element in processes.into_iter().flatten() {

@@ -219,7 +219,7 @@ where
         .headers()
         .get(header::CONNECTION)
         .and_then(|x| x.to_str().ok())
-         .is_some_and(|x| x.contains("Upgrade"))
+        .is_some_and(|x| x.contains("Upgrade"))
         && req
             .headers()
             .get(header::UPGRADE)
